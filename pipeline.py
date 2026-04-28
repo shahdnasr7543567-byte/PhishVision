@@ -1,26 +1,28 @@
-from screenshot import take_screenshot
-from analyze import analyze_screenshot
-from url_analyzer import analyze_url
+# 👁️ PhishVision
 
-def scan(url):
-    result = {
-        'url': url,
-        'phishing': False,
-        'reasons': []
-    }
-    
-    url_suspicious = analyze_url(url)
-    if url_suspicious:
-        result['phishing'] = True
-        result['reasons'].append('Suspicious URL')
-    
-    screenshot_success = take_screenshot(url, "temp_scan.png")
-    
-    if screenshot_success:
-        image_suspicious = analyze_screenshot("temp_scan.png")
-        if image_suspicious:
-            result['phishing'] = True
-            result['reasons'].append('Login page detected')
-    
-    return result
+AI-Powered Phishing Website Detector
 
+## What is PhishVision?
+A system that detects phishing websites using Computer Vision and AI.
+It takes a screenshot of any website and analyzes it to determine if it's safe or a phishing attempt.
+
+## How it works
+1. Enter a URL
+2. System takes a screenshot
+3. AI analyzes the image
+4. Returns: SAFE ✅ or PHISHING ⚠️
+
+## Technologies
+- Python
+- OpenCV (Computer Vision)
+- Selenium (Screenshot)
+- Flask (API)
+- HTML/CSS/JS (Frontend)
+
+## How to run
+pip install flask selenium opencv-python pillow
+python app.py
+
+## Results
+- Google.com → ✅ SAFE
+- Gmail.com → ⚠️ PHISHING DETECTED
